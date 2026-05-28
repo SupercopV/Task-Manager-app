@@ -3,58 +3,282 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Task Manager</title>
+    <meta
+      name="description"
+      content="Task Manager — a modern Kanban workspace to plan, track, and complete work across Todo, In Progress, and Done."
+    />
+    <title>Task Manager — Organize work beautifully</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./style.css" />
   </head>
-  <body>
-    <main class="shell">
-      <header class="topbar">
-        <div class="brand">
+  <body class="landing-page">
+    <div class="landing-glow" aria-hidden="true"></div>
+
+    <header class="landing-nav" id="top">
+      <div class="landing-nav-inner">
+        <a class="brand" href="./index.html">
           <div class="logo">TM</div>
           <div>
             <div class="brand-title">Task Manager</div>
-            <div class="brand-subtitle">Simple Kanban for your day</div>
+            <div class="brand-subtitle">Kanban workspace</div>
           </div>
-        </div>
-        <nav class="topnav">
-          <a class="btn ghost" href="./login.html">Login</a>
-          <a class="btn primary" href="./register.html">Create account</a>
-        </nav>
-      </header>
+        </a>
 
-      <section class="hero">
-        <div class="hero-card">
-          <h1>Stay on top of tasks.</h1>
-          <p>Organize work across <strong>Todo</strong>, <strong>In Progress</strong>, and <strong>Done</strong>.</p>
+        <nav class="landing-links" id="navLinks">
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+        </nav>
+
+        <div class="landing-nav-actions">
+          <button id="themeToggle" class="btn ghost" type="button" aria-label="Toggle theme">Theme</button>
+          <a class="btn ghost hide-mobile" href="./login.html">Login</a>
+          <a class="btn primary" href="./register.html">Get started free</a>
+          <button class="nav-toggle" id="navToggle" type="button" aria-label="Open menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="landing-hero">
+        <div class="landing-hero-copy reveal">
+          <div class="badge">
+            <span class="badge-dot"></span>
+            New · Drag & drop Kanban board
+          </div>
+          <h1>
+            Ship work faster with a
+            <span class="gradient-text">clear Kanban flow</span>
+          </h1>
+          <p class="lead">
+            Plan tasks in <strong>Todo</strong>, move them to <strong>In Progress</strong>, and celebrate
+            <strong>Done</strong> — all in one secure, responsive workspace built for teams and individuals.
+          </p>
           <div class="hero-actions">
-            <a class="btn primary" href="./register.html">Get started</a>
-            <a class="btn" href="./login.html">I already have an account</a>
+            <a class="btn primary btn-lg" href="./register.html">Start for free</a>
+            <a class="btn btn-lg" href="./login.html">Sign in</a>
+          </div>
+          <div class="hero-stats">
+            <div class="stat">
+              <div class="stat-value">3</div>
+              <div class="stat-label">Workflow stages</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">JWT</div>
+              <div class="stat-label">Secure auth</div>
+            </div>
+            <div class="stat">
+              <div class="stat-value">100%</div>
+              <div class="stat-label">Responsive UI</div>
+            </div>
           </div>
         </div>
-        <div class="hero-preview">
-          <div class="mini-board">
-            <div class="mini-col">
-              <div class="mini-col-title">Todo</div>
-              <div class="mini-card"></div>
-              <div class="mini-card"></div>
+
+        <div class="landing-hero-visual reveal reveal-delay">
+          <div class="browser-frame">
+            <div class="browser-chrome">
+              <span class="dot red"></span>
+              <span class="dot yellow"></span>
+              <span class="dot green"></span>
+              <span class="browser-url">app.taskmanager.io/dashboard</span>
             </div>
-            <div class="mini-col">
-              <div class="mini-col-title">In Progress</div>
-              <div class="mini-card"></div>
+            <div class="browser-body">
+              <div class="preview-board">
+                <div class="preview-col preview-todo">
+                  <div class="preview-col-head">
+                    <span>Todo</span>
+                    <span class="preview-count">2</span>
+                  </div>
+                  <article class="preview-task">
+                    <h4>Design landing page</h4>
+                    <p>Hero, features, and CTA sections</p>
+                  </article>
+                  <article class="preview-task">
+                    <h4>Write API docs</h4>
+                    <p>Endpoints for auth & tasks</p>
+                  </article>
+                </div>
+                <div class="preview-col preview-progress">
+                  <div class="preview-col-head">
+                    <span>In Progress</span>
+                    <span class="preview-count">1</span>
+                  </div>
+                  <article class="preview-task highlight">
+                    <h4>Build Kanban board</h4>
+                    <p>Drag & drop between columns</p>
+                  </article>
+                </div>
+                <div class="preview-col preview-done">
+                  <div class="preview-col-head">
+                    <span>Done</span>
+                    <span class="preview-count">3</span>
+                  </div>
+                  <article class="preview-task done-card">
+                    <h4>User registration</h4>
+                    <p>JWT login flow complete</p>
+                  </article>
+                  <article class="preview-task done-card">
+                    <h4>Database setup</h4>
+                    <p>PostgreSQL connected</p>
+                  </article>
+                </div>
+              </div>
             </div>
-            <div class="mini-col">
-              <div class="mini-col-title">Done</div>
-              <div class="mini-card"></div>
-              <div class="mini-card"></div>
-              <div class="mini-card"></div>
+          </div>
+          <div class="floating-card fc-1">
+            <span class="fc-icon">✓</span>
+            <div>
+              <strong>Task completed</strong>
+              <span>Deploy backend to Render</span>
+            </div>
+          </div>
+          <div class="floating-card fc-2">
+            <span class="fc-icon">↔</span>
+            <div>
+              <strong>Drag & drop</strong>
+              <span>Move cards instantly</span>
             </div>
           </div>
         </div>
       </section>
 
-      <footer class="footer">
-        <span>Built with Django + DRF + JWT and Vanilla JS.</span>
-      </footer>
+      <!-- Trusted strip -->
+      <section class="trust-strip reveal">
+        <p>Built with production-ready tools</p>
+        <div class="trust-logos">
+          <span>Django</span>
+          <span>DRF</span>
+          <span>JWT</span>
+          <span>PostgreSQL</span>
+          <span>Vanilla JS</span>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section class="landing-section" id="features">
+        <div class="section-head reveal">
+          <span class="section-tag">Features</span>
+          <h2>Everything you need to stay organized</h2>
+          <p class="muted">
+            A focused task manager with authentication, real-time updates, and a delightful board experience.
+          </p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature-card reveal">
+            <div class="feature-icon todo-icon">◎</div>
+            <h3>Kanban columns</h3>
+            <p>Visualize work across Todo, In Progress, and Done with color-coded stages.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon progress-icon">↔</div>
+            <h3>Drag & drop</h3>
+            <p>Move tasks between columns in one gesture — changes sync to the server instantly.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon done-icon">🔒</div>
+            <h3>Secure accounts</h3>
+            <p>Register, login, and logout with JWT tokens. Your tasks are private to you.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon">✎</div>
+            <h3>Full task control</h3>
+            <p>Create, edit, and delete tasks with title, description, status, and timestamps.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon">⌕</div>
+            <h3>Search & filter</h3>
+            <p>Find tasks quickly with live search and status filters on your dashboard.</p>
+          </article>
+          <article class="feature-card reveal">
+            <div class="feature-icon">☾</div>
+            <h3>Dark mode</h3>
+            <p>Switch themes for comfortable viewing day or night — preference saved locally.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- How it works -->
+      <section class="landing-section alt-section" id="how">
+        <div class="section-head reveal">
+          <span class="section-tag">How it works</span>
+          <h2>Up and running in three steps</h2>
+          <p class="muted">No complex setup — create an account and start managing tasks immediately.</p>
+        </div>
+        <ol class="steps">
+          <li class="step-card reveal">
+            <div class="step-num">1</div>
+            <h3>Create your account</h3>
+            <p>Register with a username and password. You'll receive a secure JWT access token.</p>
+          </li>
+          <li class="step-card reveal">
+            <div class="step-num">2</div>
+            <h3>Add tasks to your board</h3>
+            <p>Capture ideas in Todo, add descriptions, and organize work the way your brain thinks.</p>
+          </li>
+          <li class="step-card reveal">
+            <div class="step-num">3</div>
+            <h3>Move work forward</h3>
+            <p>Drag cards to In Progress, then Done — or edit status anytime from the task modal.</p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-banner reveal">
+        <div class="cta-inner">
+          <div>
+            <h2>Ready to organize your day?</h2>
+            <p class="muted">Join Task Manager and turn chaos into a clear, visual workflow.</p>
+          </div>
+          <div class="cta-actions">
+            <a class="btn primary btn-lg" href="./register.html">Create free account</a>
+            <a class="btn btn-lg ghost-on-dark" href="./dashboard.html">View dashboard</a>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div>
+          <a class="brand footer-brand" href="./index.html">
+            <div class="logo">TM</div>
+            <div class="brand-title">Task Manager</div>
+          </a>
+          <p class="muted small">A clean Kanban task manager for students, developers, and teams.</p>
+        </div>
+        <div>
+          <h4>Product</h4>
+          <a href="#features">Features</a>
+          <a href="#how">How it works</a>
+          <a href="./dashboard.html">Dashboard</a>
+        </div>
+        <div>
+          <h4>Account</h4>
+          <a href="./login.html">Login</a>
+          <a href="./register.html">Register</a>
+        </div>
+        <div>
+          <h4>API</h4>
+          <span class="muted small">POST /api/register/</span>
+          <span class="muted small">POST /api/login/</span>
+          <span class="muted small">GET /api/tasks/</span>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Task Manager. Built with Django + DRF + JWT.</span>
+        <a href="#top" class="back-top">Back to top ↑</a>
+      </div>
+    </footer>
+
+    <script src="./config.js"></script>
+    <script src="./script.js"></script>
   </body>
 </html>

@@ -1,2 +1,4 @@
 [build]
   publish = "."
+
+# SPA-style fallback not needed — each page is a separate HTML file

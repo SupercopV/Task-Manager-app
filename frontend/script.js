@@ -1,8 +1,11 @@
 /* global fetch */
 
 const CONFIG = {
-  // Update these for deployment (Render backend URL)
-  API_BASE: localStorage.getItem("tm_api_base") || "http://127.0.0.1:8000/api",
+  // Production: set window.TM_API_BASE in config.js (see DEPLOY.md)
+  API_BASE:
+    localStorage.getItem("tm_api_base") ||
+    (typeof window !== "undefined" && window.TM_API_BASE) ||
+    "http://127.0.0.1:8000/api",
   TOKEN_KEY: "tm_token",
   THEME_KEY: "tm_theme",
 };
@@ -26,6 +29,14 @@ function clearToken() {
 function setTheme(theme) {
   document.documentElement.dataset.theme = theme;
   localStorage.setItem(CONFIG.THEME_KEY, theme);
+  updateThemeButtonLabel();
+}
+
+function updateThemeButtonLabel() {
+  const btn = $("#themeToggle");
+  if (!btn) return;
+  const isLight = document.documentElement.dataset.theme === "light";
+  btn.textContent = isLight ? "Dark mode" : "Light mode";
 }
 
 function initTheme() {
@@ -328,6 +339,7 @@ async function bindDashboard() {
     setTheme(next);
     toast("success", "Theme updated", `Switched to ${next} mode.`);
   });
+  updateThemeButtonLabel();
 
   logout.addEventListener("click", () => {
     clearToken();
@@ -431,8 +443,49 @@ async function bindDashboard() {
   }
 }
 
+function bindLanding() {
+  if (!document.body.classList.contains("landing-page")) return;
+
+  $("#themeToggle")?.addEventListener("click", () => {
+    const next = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+    setTheme(next);
+  });
+  updateThemeButtonLabel();
+
+  const navToggle = $("#navToggle");
+  const navLinks = $("#navLinks");
+  navToggle?.addEventListener("click", () => {
+    const open = navLinks.classList.toggle("open");
+    navToggle.classList.toggle("open", open);
+    navToggle.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+
+  navLinks?.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navLinks.classList.remove("open");
+      navToggle?.classList.remove("open");
+      navToggle?.setAttribute("aria-expanded", "false");
+    });
+  });
+
+  const reveals = document.querySelectorAll(".reveal");
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12, rootMargin: "0px 0px -40px 0px" }
+  );
+  reveals.forEach((el) => observer.observe(el));
+}
+
 // Boot
 initTheme();
+bindLanding();
 bindLogin();
 bindRegister();
 bindDashboard();
