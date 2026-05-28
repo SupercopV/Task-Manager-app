@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Manager</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <div class="brand">
+          <div class="logo">TM</div>
+          <div>
+            <div class="brand-title">Task Manager</div>
+            <div class="brand-subtitle">Simple Kanban for your day</div>
+          </div>
+        </div>
+        <nav class="topnav">
+          <a class="btn ghost" href="./login.html">Login</a>
+          <a class="btn primary" href="./register.html">Create account</a>
+        </nav>
+      </header>
+
+      <section class="hero">
+        <div class="hero-card">
+          <h1>Stay on top of tasks.</h1>
+          <p>Organize work across <strong>Todo</strong>, <strong>In Progress</strong>, and <strong>Done</strong>.</p>
+          <div class="hero-actions">
+            <a class="btn primary" href="./register.html">Get started</a>
+            <a class="btn" href="./login.html">I already have an account</a>
+          </div>
+        </div>
+        <div class="hero-preview">
+          <div class="mini-board">
+            <div class="mini-col">
+              <div class="mini-col-title">Todo</div>
+              <div class="mini-card"></div>
+              <div class="mini-card"></div>
+            </div>
+            <div class="mini-col">
+              <div class="mini-col-title">In Progress</div>
+              <div class="mini-card"></div>
+            </div>
+            <div class="mini-col">
+              <div class="mini-col-title">Done</div>
+              <div class="mini-card"></div>
+              <div class="mini-card"></div>
+              <div class="mini-card"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <span>Built with Django + DRF + JWT and Vanilla JS.</span>
+      </footer>
+    </main>
+  </body>
+</html>

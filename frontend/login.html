@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login • Task Manager</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="shell auth-shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html">
+          <div class="logo">TM</div>
+          <div class="brand-title">Task Manager</div>
+        </a>
+        <nav class="topnav">
+          <a class="btn ghost" href="./register.html">Create account</a>
+        </nav>
+      </header>
+
+      <section class="auth">
+        <div class="card auth-card">
+          <h1>Welcome back</h1>
+          <p class="muted">Login to view your dashboard.</p>
+
+          <form id="loginForm" class="form">
+            <label class="field">
+              <span>Username</span>
+              <input name="username" autocomplete="username" required />
+            </label>
+
+            <label class="field">
+              <span>Password</span>
+              <input name="password" type="password" autocomplete="current-password" required />
+            </label>
+
+            <button class="btn primary full" type="submit">
+              <span class="btn-text">Login</span>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+          </form>
+
+          <div class="auth-links">
+            <span class="muted">No account?</span>
+            <a href="./register.html">Register</a>
+          </div>
+        </div>
+      </section>
+
+      <div id="toastHost" class="toast-host" aria-live="polite"></div>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dashboard • Task Manager</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <header class="topbar">
+        <a class="brand" href="./index.html">
+          <div class="logo">TM</div>
+          <div>
+            <div class="brand-title">Task Manager</div>
+            <div id="userBadge" class="brand-subtitle">Loading…</div>
+          </div>
+        </a>
+        <nav class="topnav">
+          <button id="themeToggle" class="btn ghost" type="button">Dark mode</button>
+          <button id="logoutBtn" class="btn danger" type="button">Logout</button>
+        </nav>
+      </header>
+
+      <section class="toolbar card">
+        <form id="createTaskForm" class="create-form">
+          <input name="title" placeholder="New task title…" maxlength="200" required />
+          <input name="description" placeholder="Description (optional)" />
+          <button class="btn primary" type="submit">
+            <span class="btn-text">Add</span>
+            <span class="spinner" aria-hidden="true"></span>
+          </button>
+        </form>
+
+        <div class="filters">
+          <input id="searchInput" placeholder="Search tasks…" />
+          <select id="statusFilter">
+            <option value="">All statuses</option>
+            <option value="TODO">Todo</option>
+            <option value="IN_PROGRESS">In Progress</option>
+            <option value="DONE">Done</option>
+          </select>
+          <button id="refreshBtn" class="btn" type="button">Refresh</button>
+        </div>
+      </section>
+
+      <section class="board">
+        <div class="column" data-status="TODO">
+          <div class="column-head todo">
+            <div>
+              <div class="column-title">Todo</div>
+              <div class="column-subtitle" id="countTODO">0 tasks</div>
+            </div>
+          </div>
+          <div class="lane" id="laneTODO" data-lane="TODO"></div>
+        </div>
+
+        <div class="column" data-status="IN_PROGRESS">
+          <div class="column-head progress">
+            <div>
+              <div class="column-title">In Progress</div>
+              <div class="column-subtitle" id="countIN_PROGRESS">0 tasks</div>
+            </div>
+          </div>
+          <div class="lane" id="laneIN_PROGRESS" data-lane="IN_PROGRESS"></div>
+        </div>
+
+        <div class="column" data-status="DONE">
+          <div class="column-head done">
+            <div>
+              <div class="column-title">Done</div>
+              <div class="column-subtitle" id="countDONE">0 tasks</div>
+            </div>
+          </div>
+          <div class="lane" id="laneDONE" data-lane="DONE"></div>
+        </div>
+      </section>
+
+      <div id="toastHost" class="toast-host" aria-live="polite"></div>
+
+      <dialog id="editDialog" class="dialog">
+        <form id="editForm" method="dialog" class="card dialog-card">
+          <div class="dialog-head">
+            <div>
+              <div class="dialog-title">Edit task</div>
+              <div class="muted small">Update title, description, and status.</div>
+            </div>
+            <button class="btn ghost" value="cancel" type="submit">Close</button>
+          </div>
+
+          <input type="hidden" name="id" />
+
+          <label class="field">
+            <span>Title</span>
+            <input name="title" maxlength="200" required />
+          </label>
+
+          <label class="field">
+            <span>Description</span>
+            <textarea name="description" rows="4"></textarea>
+          </label>
+
+          <label class="field">
+            <span>Status</span>
+            <select name="status">
+              <option value="TODO">Todo</option>
+              <option value="IN_PROGRESS">In Progress</option>
+              <option value="DONE">Done</option>
+            </select>
+          </label>
+
+          <div class="dialog-actions">
+            <button class="btn primary" value="save" type="submit">
+              <span class="btn-text">Save</span>
+              <span class="spinner" aria-hidden="true"></span>
+            </button>
+            <button id="deleteBtn" class="btn danger" type="button">Delete</button>
+          </div>
+        </form>
+      </dialog>
+    </main>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
