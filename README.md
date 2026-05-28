@@ -87,6 +87,6 @@ If your backend URL changes, update it in `frontend/script.js` by changing:
 - `CONFIG.API_BASE`
 
 ## Deployment links
-- **Frontend**: (add your link)
-- **Backend**: (add your link)
+- **Frontend**: https://task-manager-app3.netlify.app/
+- **Backend**: https://task-manager-app-31jm.onrender.com/api/login/
 
